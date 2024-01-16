@@ -196,21 +196,31 @@ discordClient.on('messageCreate', async (msg) => {
                 else
                     msg.reply('Already connected')
             }
-        } else if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
+        } 
+
+	if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
+            if (msg.member.voice.channel.id) {
+                msg.reply('Error: Testing.')
+            } else {
+                if (guildMap.has(mapKey))
+                    await await message.guild.me.voice.channel.leave();
+                else
+                    msg.reply('testing 2')
+            }
+        } 
+	/*
+	else if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
             if (guildMap.has(mapKey)) {
                 let val = guildMap.get(mapKey);
-		if (message.guild.me.voice.channel) 
-		{
-	            await message.guild.me.voice.channel.leave();
-	            message.channel.send("I've left the voice channel!");
-		}
-                /// if (val.voice_Channel) val.voice_Channel.leave()
-                /// if (val.voice_Connection) val.voice_Connection.disconnect()
+                if (val.voice_Channel) val.voice_Channel.leave()
+                if (val.voice_Connection) val.voice_Connection.disconnect()
                 guildMap.delete(mapKey)
                 msg.reply("Disconnected.")
             } else {
                 msg.reply("Cannot leave because not connected.")
             }
+	*/
+		
         } else if (msg.content.trim().toLowerCase() == _CMD_HELP) {
             msg.reply(getHelpString());
         }
