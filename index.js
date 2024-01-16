@@ -199,8 +199,13 @@ discordClient.on('messageCreate', async (msg) => {
         } else if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
             if (guildMap.has(mapKey)) {
                 let val = guildMap.get(mapKey);
-                if (val.voice_Channel) val.voice_Channel.leave()
-                if (val.voice_Connection) val.voice_Connection.disconnect()
+		if (message.guild.me.voice.channel) 
+		{
+	            await message.guild.me.voice.channel.leave();
+	            message.channel.send("I've left the voice channel!");
+		}
+                /// if (val.voice_Channel) val.voice_Channel.leave()
+                /// if (val.voice_Connection) val.voice_Connection.disconnect()
                 guildMap.delete(mapKey)
                 msg.reply("Disconnected.")
             } else {
