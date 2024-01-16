@@ -198,15 +198,9 @@ discordClient.on('messageCreate', async (msg) => {
             }
         } 
 
-	if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
-            if (msg.member.voice.channel.id) {
-                msg.reply('Error: Testing.')
-            } else {
-                if (guildMap.has(mapKey))
-                    await await message.guild.me.voice.channel.leave();
-                else
-                    msg.reply('testing 2')
-            }
+	if (msg.content.trim().toLowerCase() == _CMD_LEAVE) 
+	{
+            await message.guild.me.voice.channel.leave();
         } 
 	/*
 	else if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
