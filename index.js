@@ -198,20 +198,18 @@ discordClient.on('messageCreate', async (msg) => {
             }
         }  
 
-else if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
-    if (guildMap.has(mapKey)) {
-        let val = guildMap.get(mapKey);
-            if (val.voice_Channel) await val.voice_Channel.leave();
-            if (val.voice_Connection) await val.voice_Connection.disconnect();
-            guildMap.delete(mapKey);
-            msg.reply("Disconnected.");
 
-    } else {
-        msg.reply("Cannot leave because not connected.");
-    }
-}
-
-
+	else if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
+            if (guildMap.has(mapKey)) {
+                let val = guildMap.get(mapKey);
+                if (val.voice_Channel) await val.voice_Channel.leave();
+		if (val.voice_Connection) await val.voice_Connection.disconnect();
+                guildMap.delete(mapKey)
+                msg.reply("Disconnected.")
+            } else {
+                msg.reply("Cannot leave because not connected.")
+            }
+	    
 /*
 	else if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
             if (guildMap.has(mapKey)) {
