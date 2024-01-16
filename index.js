@@ -198,6 +198,17 @@ discordClient.on('messageCreate', async (msg) => {
             }
         }  
 
+
+	else if (message.content === '!leave') {
+	        // Check if the bot is in a voice channel
+	        if (message.guild.me.voice.channel) {
+	            await message.guild.me.voice.channel.leave();
+	            message.channel.send("I've left the voice channel!");
+	        } else {
+	            message.reply("I'm not in a voice channel!");
+	        }
+	    }
+/*
 	else if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
             if (guildMap.has(mapKey)) {
                 let val = guildMap.get(mapKey);
@@ -208,7 +219,7 @@ discordClient.on('messageCreate', async (msg) => {
             } else {
                 msg.reply("Cannot leave because not connected.")
             }
-
+*/
 		
         } else if (msg.content.trim().toLowerCase() == _CMD_HELP) {
             msg.reply(getHelpString());
