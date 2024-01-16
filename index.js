@@ -199,15 +199,12 @@ discordClient.on('messageCreate', async (msg) => {
         }  
 
 
-	else if (message.content === '!leave') {
-	        // Check if the bot is in a voice channel
-	        if (message.guild.me.voice.channel) {
-	            await message.guild.me.voice.channel.leave();
-	            message.channel.send("I've left the voice channel!");
-	        } else {
-	            message.reply("I'm not in a voice channel!");
-	        }
-	    }
+	else if if (msg.content.trim().toLowerCase() == _CMD_LEAVE) 
+	{
+	    await message.guild.me.voice.channel.leave();
+	    message.channel.send("I've left the voice channel!");
+	 } 
+
 /*
 	else if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
             if (guildMap.has(mapKey)) {
