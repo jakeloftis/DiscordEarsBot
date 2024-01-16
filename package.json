@@ -8,7 +8,8 @@
     "start": "node index.js"
   },
   "engines": {
-    "node": "<=13.x"
+    "node": ">=12.x"
+    "npm": ">=12.x"
   },
   "author": "Ilja Nevolin",
   "repository": {
