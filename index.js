@@ -196,13 +196,8 @@ discordClient.on('messageCreate', async (msg) => {
                 else
                     msg.reply('Already connected')
             }
-        } 
+        }  
 
-	if (msg.content.trim().toLowerCase() == _CMD_LEAVE) 
-	{
-            await message.guild.me.voice.channel.leave();
-        } 
-	/*
 	else if (msg.content.trim().toLowerCase() == _CMD_LEAVE) {
             if (guildMap.has(mapKey)) {
                 let val = guildMap.get(mapKey);
@@ -213,7 +208,7 @@ discordClient.on('messageCreate', async (msg) => {
             } else {
                 msg.reply("Cannot leave because not connected.")
             }
-	*/
+
 		
         } else if (msg.content.trim().toLowerCase() == _CMD_HELP) {
             msg.reply(getHelpString());
